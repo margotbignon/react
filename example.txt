@@ -1,0 +1,82 @@
+React
+
+Modules js : séparés son code en plusieurs fichiers/fonctionnalités
+Un bundled va rassembler tous les fichiers nécessaires à notre app (images, font, modules JS, outils, JSX…) en un dossier optimisé, le bundle
+Bundle : 
+Vite
+Create-react-app / Webpack
+
+Installation React:
+
+npm create vite@latest
+Npm i
+Npm run dev
+Lancer le bundle : npm run build
+
+Rajouter dans les settings.json :     "reactSnippets.settings.importReactOnTop": false,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "emmet.syntaxProfiles": {
+        "javascript" : "jsx"
+    },
+
+Tailwind: npm i postcss-cli -g
+
+Il faut retourner toujours un seul élément avec les composants
+
+useState
+useRef
+useEffect
+
+Test API : https://jsonplaceholder.typicode.com/
+
+setInterval :
+    useEffect(() => {
+      const intervalID = setInterval(() => {
+        setCount(state => state + 1)
+      }, 1000)
+
+Sélectionner plusieurs éléments avec Ref: export default function Container() {
+
+  const inputsRef = useRef([])
+
+  function addInputRef(el) {
+    if(el && !inputsRef.current.includes(el)) {
+      inputsRef.current.push(el)
+    }
+    console.log(el)
+  }
+
+  return (
+   <div>
+      <input ref={addInputRef} type="text" />
+      <input ref={addInputRef} type="text" />
+      <input ref={addInputRef} type="text" />
+   </div>
+  )
+}
+
+Reducer : export default function Container() {
+  const [count, dispatch] = useReducer(reducer, 0)
+
+  function reducer(state,action) {
+    switch(action.type) {
+      case "increment":
+        return state + 1
+    }
+  }
+
+  return <div>
+    <h1>Valeur du compteur : {count}</h1>
+  <button onClick={() => dispatch({type:"increment"})}>Incr</button>
+  </div>
+}
+
+Créer un systèmème de route :
+npm i react-router-dom
+Doit être mis en place dans le fichier global App.jsx
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+Redux 
+
